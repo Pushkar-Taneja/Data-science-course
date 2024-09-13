@@ -240,7 +240,6 @@ scatter = sns.scatterplot(
 plt.show()
 
 ```
-
 #### Results
 
 ![Most Optimal Skills for Data Analysts in the US with Coloring by Technology](images/Most_Optimal_Skills_for_Data_Analysts_in_the_US_with_Coloring_by_Technology.png)  
@@ -285,4 +284,57 @@ This project was not without its challenges, but it provided good learning oppor
 
 This exploration into the data analyst job market has been incredibly informative, highlighting the critical skills and trends that shape this evolving field. The insights I got enhance my understanding and provide actionable guidance for anyone looking to advance their career in data analytics. As the market continues to change, ongoing analysis will be essential to stay ahead in data analytics. This project is a good foundation for future explorations and underscores the importance of continuous learning and adaptation in the data field.
 
+# Data Science Salary Analysis in India
+
+This repository contains a Python script that analyzes the highest-paid skills and companies for data scientists in India. The analysis utilizes two bar charts to showcase the results: one for the highest-paid data scientists and another for the top-paying companies for data scientists in India.
+
+## Overview
+
+Data science has become one of the most lucrative career paths globally, and India is no exception. To understand the dynamics of this field, this analysis explores two important dimensions:
+
+1. **Top 10 Highest Paid Data Scientists in India**: This chart highlights the data scientists in India who are the highest paid based on their median salary.
+2. **Top 10 Paying Companies for Data Scientists in India**: This chart showcases the companies that offer the highest salaries to data scientists in India.
+
+### Visualizations
+
+The script produces two visualizations using the `matplotlib` and `seaborn` libraries:
+
+1. **Top 10 Highest Paid Data Scientists in India**: This bar chart shows the top 10 highest-paid data scientists along with their median salaries.
+```python
+sns.barplot(data=df_DS_top_pay, x='median', y=df_DS_top_pay.index, hue='median', ax=ax[0], palette='dark:b_r')
+ax[0].legend().remove()
+ax[0].set_title('Top 10 Highest Paid Data Scientists in India')
+ax[0].set_ylabel('')
+ax[0].set_xlabel('')
+ax[0].set_xlim(0,170000)
+ax[0].xaxis.set_major_formatter(plt.FuncFormatter(lambda x, _: f'${int(x/1000)}K'))
+
+```
+   
+2. **Top 10 Paying Companies for Data Scientists in India**: This bar chart highlights the companies that pay the highest median salaries to data scientists in India.
+```python
+sns.barplot(data=df_DS_Skills, x='median', y=df_DS_Skills.index, hue='median', ax=ax[1], palette='dark:b_r')
+ax[1].legend().remove()
+ax[1].set_title('Top 10 Paying Companies for Data Scientists in India')
+ax[1].set_ylabel('')
+ax[1].set_xlabel('Median Salary (USD)')
+ax[1].set_xlim(ax[0].get_xlim())  # Matches the x-axis limits with the first plot.
+ax[1].xaxis.set_major_formatter(plt.FuncFormatter(lambda x, _: f'${int(x/1000)}K'))
+```
+
+### Results and Insights
+
+- **Highest Paid Data Scientists**: The first graph shows that data scientists with specialized technical skills or those associated with particular companies tend to earn significantly higher salaries, sometimes up to $170,000 USD annually.
+- **Top Paying Companies**: The second graph illustrates that top-tier companies in India, such as major tech firms or consulting giants, are willing to pay premium salaries to attract top talent in data science.
+
+Both charts use the `median` salary as the primary measure of central tendency, providing a clear understanding of the distribution of salaries.
+
+## Code Details
+
+Below is a breakdown of the key sections in the code:
+
+### 1. Set Up the Visualization
+
+```python
+fig, ax = plt.subplots(2, 1)  # Creates a figure with two subplots, one for each bar chart.
 
